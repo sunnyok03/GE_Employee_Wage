@@ -7,6 +7,7 @@ public class EmployeeWage {
         int wagePerHour = 20;
         int fullDayHour = 8;
         int partTimeHour = 4;
+        int workingDays = 20;
 
         //attendance check
         boolean isPresent = checkAttendance();
@@ -16,6 +17,12 @@ public class EmployeeWage {
 
         // check wage for part-time
         partTimeWageCalculations(1,wagePerHour,partTimeHour);
+
+        //check wage for full time of a month
+        monthlyWageCalculations(1,wagePerHour,fullDayHour,workingDays);
+
+        // check wage for part-time of a month
+        monthlyPartTimeWageCalculations(1,wagePerHour,partTimeHour,workingDays);
 
         int isFullTime = 1;
         int hrs = 0;
@@ -48,11 +55,23 @@ public class EmployeeWage {
             System.out.println("Daily wage of full time employee: "+fullTimeDailyWages);
         }
 
-        //part time wage calculation
+        //part-time wage calculation
         public static void partTimeWageCalculations(int isPresent,int wagePerHour,int partTimeHour){
             int partTimeDailyWages = isPresent*wagePerHour*partTimeHour;
             System.out.println("Daily wage of full time employee: "+partTimeDailyWages);
         }
+
+    //full time monthly wage calculation
+    public static void monthlyWageCalculations(int isPresent,int wagePerHour,int fullDayHour,int workingDays){
+        int fullTimeDailyWages = isPresent*wagePerHour*fullDayHour*workingDays;
+        System.out.println("Daily wage of full time employee: "+fullTimeDailyWages);
+    }
+
+    //part-time monthly wage calculation
+    public static void monthlyPartTimeWageCalculations(int isPresent,int wagePerHour,int partTimeHour,int workingDays){
+        int partTimeDailyWages = isPresent*wagePerHour*partTimeHour*workingDays;
+        System.out.println("Daily wage of full time employee: "+partTimeDailyWages);
+    }
 
 
 }
