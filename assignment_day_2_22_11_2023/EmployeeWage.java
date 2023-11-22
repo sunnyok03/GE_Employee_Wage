@@ -9,21 +9,37 @@ public class EmployeeWage {
         int partTimeHour = 4;
 
         //attendance check
-       checkAttendance();
+        boolean isPresent = checkAttendance();
 
         //check wage for full day
         dailyWageCalculations(1,wagePerHour,fullDayHour);
 
         // check wage for part-time
         partTimeWageCalculations(1,wagePerHour,partTimeHour);
+
+        int isFullTime = 1;
+        int hrs = 0;
+        switch(isFullTime){
+            case 1: // full time
+                hrs =8;
+                break;
+            case 2: // part-time
+                hrs = 4;
+                break;
+            default:
+                hrs = 0;
+        }
+        System.out.println("Wages are: "+(hrs*wagePerHour));
     }
 
-    public static void checkAttendance(){
+    public static boolean checkAttendance(){
         int empChecker = (Math.random() <= 0.5) ? 0 : 1;// 0->absent and 1->present
         if(empChecker == 1) {
             System.out.println("Employee is Present");
+            return true;
         }else {
             System.out.println("Employee is not Present");
+            return false;
         }
     }
         //full time wage calculation
@@ -37,4 +53,6 @@ public class EmployeeWage {
             int partTimeDailyWages = isPresent*wagePerHour*partTimeHour;
             System.out.println("Daily wage of full time employee: "+partTimeDailyWages);
         }
+
+
 }
