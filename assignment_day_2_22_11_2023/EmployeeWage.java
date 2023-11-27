@@ -1,23 +1,29 @@
 package com.assignment_day_2_22_11_2023;
 
+import java.util.Scanner;
+
 public class EmployeeWage {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to employee wage program.");
 
         Employee emp = new Employee();
         //attendance check
         boolean isPresent = emp.checkAttendance();
 
+        System.out.print("Enter wagePerHour, maximumWorkingHours and maximumWorkingDays respectively: ");
+        int wagePerHour = sc.nextInt();
+        int maximumWorkingHours = sc.nextInt();
+        int maximumWorkingDays = sc.nextInt();
+
         //check wage for full day
-        emp.dailyWageCalculations(isPresent,Employee.wagePerHour,Employee.fullDayHour);
+        emp.dailyWageCalculations(wagePerHour,Employee.fullDayHour);
 
         // check wage for part-time
-        emp.dailyWageCalculations(isPresent,Employee.wagePerHour,Employee.partTimeHour);
+        emp.dailyWageCalculations(wagePerHour,Employee.partTimeHour);
 
         //check wage for full time of a month
-        emp.monthlyWageCalculations(isPresent,Employee.wagePerHour,Employee.fullDayHour,Employee.maximumWorkingDays);
-
-
+        emp.monthlyWageCalculations(wagePerHour,Employee.fullDayHour,maximumWorkingDays);
 
         int isFullTime = (Math.random() <= 0.5) ? 0 : 1;//1->full-time,0->part-time
         int hrs;
@@ -31,12 +37,14 @@ public class EmployeeWage {
             default:
                 hrs = 0;
         }
-        System.out.println("Wages are: "+(hrs*Employee.wagePerHour));
+        System.out.println("Wages are: "+(hrs*wagePerHour));
 
         // check wage for part-time of a month
-        emp.monthlyPartTimeWageCalculations(isPresent,Employee.wagePerHour,Employee.partTimeHour,Employee.maximumWorkingDays);
+        emp.monthlyPartTimeWageCalculations(wagePerHour,Employee.partTimeHour,maximumWorkingDays);
 
-        // calculate maximum monthly income
-        emp.totalMonthlyIncome(Employee.wagePerHour,Employee.maximumWorkingHours,Employee.maximumWorkingDays);
+        // calculate maximum monthly income of a company
+        emp.totalMonthlyIncome("A",wagePerHour,maximumWorkingHours,maximumWorkingDays);
+        emp.totalMonthlyIncome("B",wagePerHour,maximumWorkingHours,maximumWorkingDays);
+
     }
 }
