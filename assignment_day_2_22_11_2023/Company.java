@@ -1,5 +1,9 @@
 package com.assignment_day_2_22_11_2023;
 
+
+/*
+@desc: Company details including name,wage per hour,maximum allowed days,maximum allowed hours
+ */
 public class Company {
     private String name;
     private int totalMonthlyIncome;

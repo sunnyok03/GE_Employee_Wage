@@ -1,5 +1,7 @@
 package com.assignment_day_2_22_11_2023;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeWage {
@@ -7,48 +9,27 @@ public class EmployeeWage {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to employee wage program.");
 
-        Employee emp = new Employee();
-        //attendance check
-        boolean isPresent = emp.checkAttendance();
+        System.out.print("Enter number of companies to add: ");
+        int numberOfCompanies = sc.nextInt();
+        List<Company> listOfCompanies = new ArrayList<>();
+        //adding list of companies with details
+        for(int i=0;i<numberOfCompanies;i++){
+            System.out.printf("Enter details of company %d.",i+1);
+            System.out.println();
+            System.out.print("Enter name of company: ");
+            String name = sc.next();
+            System.out.print("Enter wage per hour: ");
+            int wagePerHour = sc.nextInt();
+            System.out.print("Enter maximum working hours: ");
+            int maximumWorkingHours = sc.nextInt();
+            System.out.print("Enter maximum working days: ");
+            int maximumWorkingDays = sc.nextInt();
 
-        System.out.print("Enter wagePerHour, maximumWorkingHours and maximumWorkingDays respectively: ");
-        int wagePerHour = sc.nextInt();
-        int maximumWorkingHours = sc.nextInt();
-        int maximumWorkingDays = sc.nextInt();
-
-        //check wage for full day
-        emp.dailyWageCalculations(wagePerHour,Employee.fullDayHour);
-
-        // check wage for part-time
-        emp.dailyWageCalculations(wagePerHour,Employee.partTimeHour);
-
-        //check wage for full time of a month
-        emp.monthlyWageCalculations(wagePerHour,Employee.fullDayHour,maximumWorkingDays);
-
-        int isFullTime = (Math.random() <= 0.5) ? 0 : 1;//1->full-time,0->part-time
-        int hrs;
-        switch(isFullTime){
-            case 1: // full time
-                hrs = 8;
-                break;
-            case 0: // part-time
-                hrs = 4;
-                break;
-            default:
-                hrs = 0;
+            Company comp1 = new Company(name,wagePerHour,maximumWorkingHours,maximumWorkingDays);
+            listOfCompanies.add(comp1);
         }
-        System.out.println("Wages are: "+(hrs*wagePerHour));
+        System.out.println("-----All details added------");
 
-        // check wage for part-time of a month
-        emp.monthlyPartTimeWageCalculations(wagePerHour,Employee.partTimeHour,maximumWorkingDays);
-
-        //creating new companies
-        Company comp1 = new Company("A",wagePerHour,maximumWorkingHours,maximumWorkingDays);
-        Company comp2 = new Company("B",wagePerHour,maximumWorkingHours,maximumWorkingDays);
-
-        // calculate maximum monthly income of a company
-        emp.totalMonthlyIncome(comp1);
-        emp.totalMonthlyIncome(comp2);
 
     }
 }
