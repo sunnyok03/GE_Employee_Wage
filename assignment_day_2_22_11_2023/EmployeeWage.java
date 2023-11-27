@@ -11,7 +11,7 @@ public class EmployeeWage {
 
         System.out.print("Enter number of companies to add: ");
         int numberOfCompanies = sc.nextInt();
-        List<Company> listOfCompanies = new ArrayList<>();
+        EmployeeWageBuilder empWageBuilder = new EmployeeWageBuilder(numberOfCompanies);
         //adding list of companies with details
         for(int i=0;i<numberOfCompanies;i++){
             System.out.printf("Enter details of company %d.",i+1);
@@ -26,10 +26,10 @@ public class EmployeeWage {
             int maximumWorkingDays = sc.nextInt();
 
             Company comp1 = new Company(name,wagePerHour,maximumWorkingHours,maximumWorkingDays);
-            listOfCompanies.add(comp1);
+            empWageBuilder.addCompanyDetails(comp1,i);
         }
         System.out.println("-----All details added------");
 
-
+        empWageBuilder.monthlyWagesAtEachCompanies();
     }
 }
