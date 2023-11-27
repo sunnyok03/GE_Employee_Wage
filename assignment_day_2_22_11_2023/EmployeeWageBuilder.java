@@ -23,7 +23,6 @@ public class EmployeeWageBuilder implements CompanyInterface{
      @return:
      */
     private void totalMonthlyIncome(Company comp){
-        List<Integer> dailyWages = new ArrayList<>();
         int currDay = 0;
         int currHour = 0;
         int totalWage;
@@ -33,23 +32,15 @@ public class EmployeeWageBuilder implements CompanyInterface{
             int isFullTime = (Math.random() <= 0.5) ? 0 : 1; // 1->full-time,0->part-time
             day++;
             if(!isPresent){
-                dailyWages.add(0);
                 continue;
             }
             currDay+=1;
             if(isFullTime == 1){ // full-time
-                dailyWages.add(8*comp.getWagePerHour());
                 currHour+=8;
             }else{ // part-time
-                dailyWages.add(4*comp.getWagePerHour());
                 currHour+=4;
             }
         }
-        System.out.print("Daily wages :");
-        for(Integer dailyWage : dailyWages){
-            System.out.print(dailyWage + " ");
-        }
-        System.out.println();
 
         totalWage = currHour * comp.getWagePerHour();
         System.out.println("Total working days: "+currDay);
