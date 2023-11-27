@@ -42,9 +42,13 @@ public class EmployeeWage {
         // check wage for part-time of a month
         emp.monthlyPartTimeWageCalculations(wagePerHour,Employee.partTimeHour,maximumWorkingDays);
 
+        //creating new companies
+        Company comp1 = new Company("A",wagePerHour,maximumWorkingHours,maximumWorkingDays);
+        Company comp2 = new Company("B",wagePerHour,maximumWorkingHours,maximumWorkingDays);
+
         // calculate maximum monthly income of a company
-        emp.totalMonthlyIncome("A",wagePerHour,maximumWorkingHours,maximumWorkingDays);
-        emp.totalMonthlyIncome("B",wagePerHour,maximumWorkingHours,maximumWorkingDays);
+        emp.totalMonthlyIncome(comp1);
+        emp.totalMonthlyIncome(comp2);
 
     }
 }

@@ -1,11 +1,9 @@
 package com.assignment_day_2_22_11_2023;
 
 public class Employee {
-    public static final int wagePerHour = 20;
     public static final int fullDayHour = 8;
     public static final int partTimeHour = 4;
-    public static final int maximumWorkingDays = 20; // maximum working days in a month
-    public static final int maximumWorkingHours = 100; // maximum working hours in a month
+
 
     /*
    To check randomly if employee is present or absent
@@ -55,15 +53,15 @@ public class Employee {
 
     /*
     To calculate maximum monthly wages
-    @params: wagePerHour,totalHours,totalDays
+    @params: company object which includes company details including wagePerHour,maximumWorkingDays,maximumWorkingHours
     @return:
     */
-    public void totalMonthlyIncome(String companyName,int wagePerHour,int maximumWorkingHours,int maximumWorkingDays){
+    public void totalMonthlyIncome(Company comp){
         int currDay = 0;
         int currHour = 0;
         int totalWage;
         int day = 0;
-        while (currHour < maximumWorkingHours && currDay < maximumWorkingDays && day < 30){
+        while (currHour < comp.getMaximumWorkingHours() && currDay < comp.getMaximumWorkingDays() && day < 30){
             boolean isPresent = (Math.random() <= 0.5) ? false : true;
             int isFullTime = (Math.random() <= 0.5) ? 0 : 1; // 1->full-time,0->part-time
             day++;
@@ -77,10 +75,11 @@ public class Employee {
                 currHour+=4;
             }
         }
-        totalWage = currHour * wagePerHour;
+        totalWage = currHour * comp.getWagePerHour();
+        comp.setTotalMonthlyIncome(totalWage);
         System.out.println("Total working days: "+currDay);
         System.out.println("Total working Hours: "+currHour);
-        System.out.printf("Monthly wages at company %s: "+ totalWage,companyName);
+        System.out.printf("Monthly wages at company %s: "+ totalWage,comp.getName());
         System.out.println();
     }
 }
