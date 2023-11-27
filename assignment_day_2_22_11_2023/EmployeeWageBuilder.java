@@ -1,11 +1,14 @@
 package com.assignment_day_2_22_11_2023;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EmployeeWageBuilder implements CompanyInterface{
 
-    public final Company[] companies;
+    private final List<Company> companies;
 
     public EmployeeWageBuilder(int numberOfCompanies) {
-        this.companies = new Company[numberOfCompanies];
+        this.companies = new ArrayList<>();
     }
 
     public void monthlyWagesAtEachCompanies(){
@@ -49,7 +52,7 @@ public class EmployeeWageBuilder implements CompanyInterface{
     @desc: add company detail to companies list
      */
     public void addCompanyDetails(Company comp,int idx){
-        this.companies[idx] = comp;
+        this.companies.add(idx,comp);
     }
 
 
