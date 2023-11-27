@@ -1,14 +1,20 @@
 package com.assignment_day_2_22_11_2023;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class EmployeeWageBuilder implements CompanyInterface{
 
     private final List<Company> companies;
+    private final HashMap<Company,Integer>totalMonthlyWages = new HashMap<>();
 
     public EmployeeWageBuilder(int numberOfCompanies) {
         this.companies = new ArrayList<>();
+    }
+
+    public List<Company> getCompanies(){
+        return this.companies;
     }
 
     public void monthlyWagesAtEachCompanies(){
@@ -55,6 +61,7 @@ public class EmployeeWageBuilder implements CompanyInterface{
         System.out.println("Total working days: "+currDay);
         System.out.println("Total working Hours: "+currHour);
         System.out.printf("Monthly wages at company %s: "+ totalWage,comp.getName());
+        totalMonthlyWages.put(comp,totalWage);
         System.out.println();
     }
 
@@ -65,5 +72,8 @@ public class EmployeeWageBuilder implements CompanyInterface{
         this.companies.add(idx,comp);
     }
 
+    public int getTotalMonthlyWages(Company comp){
+        return totalMonthlyWages.get(comp);
+    }
 
 }

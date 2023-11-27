@@ -30,6 +30,14 @@ public class EmployeeWage {
         }
         System.out.println("-----All details added------");
 
+        //get monthly wages at each company
         empWageBuilder.monthlyWagesAtEachCompanies();
+
+
+        // get monthly wages at each company by query
+        for(int i=0;i<empWageBuilder.getCompanies().size();i++){
+            Company comp = empWageBuilder.getCompanies().get(i);
+            System.out.println("Total wage at " + comp.getName()+" is " +empWageBuilder.getTotalMonthlyWages(comp));
+        }
     }
 }
